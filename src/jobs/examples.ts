@@ -1,6 +1,7 @@
 import { OpenAI } from "@trigger.dev/openai";
 import { eventTrigger } from "@trigger.dev/sdk";
 import { client } from "~/trigger";
+import { z } from "zod";
 
 const openai = new OpenAI({
   id: "openai",
@@ -17,6 +18,7 @@ client.defineJob({
   // This is triggered by an event using eventTrigger. You can also trigger Jobs with webhooks, on schedules, and more: https://trigger.dev/docs/documentation/concepts/triggers/introduction
   trigger: eventTrigger({
     name: "example.event",
+    schema: z.object({ id: z.string() }),
   }),
   integrations: {
     openai,
