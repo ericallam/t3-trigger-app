@@ -2,10 +2,11 @@ import { OpenAI } from "@trigger.dev/openai";
 import { eventTrigger } from "@trigger.dev/sdk";
 import { client } from "~/trigger";
 import { z } from "zod";
+import { env } from "~/env.mjs";
 
 const openai = new OpenAI({
   id: "openai",
-  apiKey: process.env.OPENAI_API_KEY!,
+  apiKey: env.OPENAI_API_KEY,
 });
 
 // Your first job
